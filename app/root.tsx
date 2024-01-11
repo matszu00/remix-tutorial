@@ -14,7 +14,7 @@ import {
 
 import appStylesHref from "./app.css";
 
-import { getContacts } from "./data";
+import { createEmptyContact, getContacts } from "./data";
 
 export const links: LinksFunction = () => [
 	{ rel: "stylesheet", href: appStylesHref },
@@ -23,6 +23,11 @@ export const links: LinksFunction = () => [
 export const loader = async () => {
 	const contacts = await getContacts();
 	return json({ contacts });
+};
+
+export const action = async () => {
+	const contact = await createEmptyContact();
+	return json({ contact });
 };
 
 export default function App() {
